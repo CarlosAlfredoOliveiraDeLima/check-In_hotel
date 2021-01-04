@@ -1,5 +1,15 @@
 import psycopg2
 
+
+def register_client():
+    cpf = input('Digite o CPF: ')
+    first_name = input('Digite o nome: ')
+    name = input('Digite o sobrenome: ')
+    action_db.execute("insert into client_basic_data (cpf, client_first_name, client_name) values (%s, %s, %s)",
+                      (cpf, first_name, name))
+    connection_db.commit()
+
+
 login = input("Digite o usuário: ")
 password = input("Digite a senha: ")
 
@@ -17,7 +27,7 @@ while True:
     option = input("Digite uma opção: ")
 
     if option == '1':
-        pass # register_client()
+        register_client()
     if option == '0':
         break
 
